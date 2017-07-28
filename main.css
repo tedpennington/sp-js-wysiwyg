@@ -1,0 +1,21 @@
+.person {
+	/*border: 3px solid black;*/
+}
+
+.person img {
+	display: block;
+	height: auto;
+	width: 20%;
+}
+
+.yellow-back {
+	background-color: lightyellow;
+}
+
+.blue-back {
+	background-color: lightblue;
+}
+
+.dotted-border {
+	border: 3px dotted black;
+}
