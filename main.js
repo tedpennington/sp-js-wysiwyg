@@ -1,6 +1,6 @@
 console.log("main.js loaded");
 
-console.log("people", people);
+// console.log("people", people);
 
 var peopleContainer = document.getElementById("people-container");
 
@@ -29,7 +29,7 @@ function isOdd(num) {
 var peopleDivs = document.getElementsByClassName("person");
 var textInput = document.getElementById("text-input");
 
-console.log("peopleDivs", peopleDivs);
+// console.log("peopleDivs", peopleDivs);
 
 var selectedDiv = "";
 
@@ -40,17 +40,32 @@ for (let i = 0; i < peopleDivs.length; i++) {
 	}else { peopleDivs[i].classList.add("yellow-back"); }
 
 	peopleDivs[i].addEventListener("click", (event) => {
-		peopleDivs[i].classList.add("dotted-border");
+		// peopleDivs[i].classList.add("dotted-border");
 		textInput.focus();
 		// console.log("event.target.id", event.currentTarget.id);
-		console.log("event", event);
-		console.log("event.currentTarget", event.currentTarget)
+		// WHAT IS UP WITH THIS BELOW? EVENT SHOWS CURRENTTARGET AS NULL BUT EVENT.CURRENTTARGET IS NOT?
+		// console.log("event", event);
+		// console.log("event.currentTarget", event.currentTarget)
 		selectedDiv = event.currentTarget.id;
 		console.log("You selected the div with ID: ", selectedDiv);
-
+		updateBorders();
 	});
 };
 
+//  Function that checks to see if current Person is selected, and if so, adds the border.  Otherwise, removes. 
+function updateBorders(){
+	console.log("updateBorders ran");
+	for (i = 0; i < peopleDivs.length; i++) {
+		console.log("peopleDivs[i].id : ", peopleDivs[i].id);
+		console.log("i+1 : ", i+1);
+		if (selectedDiv == peopleDivs[i].id) {
+			console.log("if statement was true");
+			peopleDivs[i].classList.add("dotted-border");
+		}else {peopleDivs[i].classList.remove("dotted-border")
+			console.log("else was true");
+		};
+	};
+};
 
 // Text Input Event Listener
 textInput.addEventListener("keyup", (event) => {
